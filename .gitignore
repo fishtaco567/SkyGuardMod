@@ -1,0 +1,11 @@
+bin
+obj
+releases
+packages/Newtonsoft.Json.8.0.1
+ICSharpCode.SharpZipLib.dll
+modtools.command
+modtools.temp
+Newtonsoft.Json.dll
+RedirectLogs.cs
+vsmodtools.exe
+.vs
