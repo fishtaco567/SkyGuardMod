@@ -1,0 +1,13 @@
+﻿{
+  "type": "code",
+  "modid": "fishskyguard",
+  "name": "WorldGenTestMod",
+  "description" : "test",
+  "authors": ["nardandas"],
+  "version": "1.0",
+  "dependencies": { 
+	"game": "",
+	"survival": ""
+  },
+  "website": "http://progfish.com"
+}

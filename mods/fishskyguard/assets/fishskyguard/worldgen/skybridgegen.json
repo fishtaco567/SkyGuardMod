@@ -1,0 +1,50 @@
+﻿{
+	residualLengthMin: 3,
+	residuallengthMax: 7,
+
+	minRubblePiles: 1,
+	maxRubblePiles: 2,
+
+	minRubbleHeight: 1,
+	maxRubbleHeight: 3,
+
+	minTowerStubSize: 4,
+	maxTowerStubSize: 8,
+
+	storeRoomHeightMin: 4,
+	storeRoomHeightMax: 6,
+
+	barracksHeightMin: 4,
+	barracksHeightMax: 5,
+
+	storeRoomPlatformExtraWidth: 2,
+
+	barracksMinCrates: 3,
+	barracksMaxCrates: 8,
+
+	barracksBedChance: 0.75,
+	barracksChestChance: 0.25,
+
+	centerChestChance: 0.5,
+
+	barracksPlatformExtraWidth: 4,
+
+	centerPlatformExtraWidth: 4,
+
+	endPlatformExtraWidth: 1,
+
+	itemsBarracksChest: [ "feather", "charcoal", "rope", "candle", "clothes-emblem-messenger-pin", "clothes-foot-soldier-boots", "clothes-foot-messenger-boots", "clothes-shoulder-hooded-cape", "armor-head-chain-iron", "armor-body-chain-iron", "armor-legs-chain-iron", "item-head-sewn-linen", "item-body-sewn-linen", "item-legs-sewn-linen" ],
+	itemsBarracksChestWeights: [ 40, 32, 30, 26, 8, 4, 2, 2, 1, 1, 1, 2, 1, 1 ],
+	minBarracksChestItems: 7,
+	maxBarracksChestItems: 14,
+	
+	itemsTowerChest: [ "bow-simple", "arrow-flint", "arrow-tinbronze", "arrow-iron", "sword-copper", "sword-iron" ],
+	itemsTowerChestWeights: [ 3, 40, 30, 20, 5, 1 ],
+	minTowerChestItems: 4,
+	maxTowerChestItems: 12,
+	
+	itemsCenterChest: [ "clothes-waist-heavy-belt", "clothes-waist-messenger-belt", "clothes-upperbody-messenger-shirt", "clothes-lowerbody-messenger-trousers", "armor-head-jerkin-leather", "armor-legs-jerkin-leather", "feather", "plank-aged", "charcoal", "rope" ],
+	itemsCenterChestWeights: [ 1, 2, 1, 1, 2, 2, 10, 6, 8, 8 ],
+	minCenterChestItems: 2,
+	maxCenterChestItems: 6
+}

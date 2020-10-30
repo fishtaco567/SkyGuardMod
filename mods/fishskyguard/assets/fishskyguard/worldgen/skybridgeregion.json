@@ -1,0 +1,16 @@
+﻿{
+	regionSize: 1024,
+	chanceOfRegion: 0.1,
+	rangeForCenter: 0.4,
+	minLengthOfPath: 6,
+	maxLengthOfPath: 14,
+	straightWalkChance: 0.8,
+	towerChance: 0.04,
+	buildingChance: 0.04,
+	brokenBridgeMinChance: 0.3,
+	brokenBridgeMaxChance: 0.9,
+	maxHeightProp: 0.8,
+	minHeightProp: 0.58,
+	maxWidth: 6,
+	minWidth: 4
+}
