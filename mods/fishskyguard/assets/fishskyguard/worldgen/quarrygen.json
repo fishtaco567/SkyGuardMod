@@ -1,0 +1,22 @@
+﻿{
+	chanceOfMetalPartsInChunk: 0.12,
+	minMetalParts: 1,
+	maxMetalParts: 3,
+
+	chanceOfGearsInChunk: 0.2,
+	minGears: 1,
+	maxGears: 3,
+
+	chanceOfSmallGear: 0.7,
+	chanceOfSmallParts: 0.7,
+	pathFadeLength: 8,
+
+	erosionMapNoiseAmp: [1, 0.4],
+	erosionMapNoiseFreq: [0.02, 0.04],
+
+	localNoiseAmp: [6, 3, 2, 1.5],
+	localNoiseFreq: [0.05, 0.1, 0.2, 0.4],
+
+	erosionStrength: 0.6,
+	erosionNegativeMod: 2
+}

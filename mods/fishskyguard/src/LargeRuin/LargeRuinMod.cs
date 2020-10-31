@@ -10,7 +10,7 @@ namespace progfish.LargeRuin {
     public class LargeRuinMod : ModSystem {
 
         private ICoreServerAPI api;
-        private IBlockAccessor chunkGenBlockAccessor;
+        private IWorldGenBlockAccessor chunkGenBlockAccessor;
         private IBlockAccessor worldBlockAccessor;
         private int chunkSize;
 
@@ -28,11 +28,19 @@ namespace progfish.LargeRuin {
         }
 
         public override double ExecuteOrder() {
-            return 0.39;
+            return 0.49;
         }
 
         private void OnChunkColumnGeneration(IServerChunk[] chunks, int chunkX, int chunkZ, ITreeAttribute chunkGenParams) {
-            var asset = api.Assets.Get(new AssetLocation("fishskyguard", "worldgen/skybridgeregion.json"));
+            var asset = api.Assets.Get(new AssetLocation("fishskyguard", "worldgen/quarryregion.json"));
+            var quarryRegion = asset.ToObject<QuarryRegion>();
+            quarryRegion.InitializeRegion(api, chunkX, chunkZ);
+
+            asset = api.Assets.Get(new AssetLocation("fishskyguard", "worldgen/quarrygen.json"));
+            var quarryGenerator = asset.ToObject<QuarryChunkGenerator>();
+            quarryGenerator.Generate(api, quarryRegion, chunkGenBlockAccessor, chunkX, chunkZ);
+
+            asset = api.Assets.Get(new AssetLocation("fishskyguard", "worldgen/skybridgeregion.json"));
             var skyBridgeRegion = asset.ToObject<SkyBridgeRegion>();
             skyBridgeRegion.InitializeRegion(chunkX, chunkZ, api.World.Seed, worldBlockAccessor.MapSizeY);
 

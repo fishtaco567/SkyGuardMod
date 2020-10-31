@@ -69,6 +69,8 @@ namespace progfish.LargeRuin {
         private int maxWidth = 6;
         [JsonProperty]
         private int minWidth = 4;
+        [JsonProperty]
+        private int branchPathDecrement = 2;
 
         private const int CHUNK_SIZE = 32;
 
@@ -186,25 +188,25 @@ namespace progfish.LargeRuin {
                                     forwardHead.dirX = 0;
                                     forwardHead.dirZ = 1;
                                     forwardHead.posZ += 1;
-                                    forwardHead.lenRemaining--;
+                                    forwardHead.lenRemaining -= branchPathDecrement;
                                     pathHeads.Enqueue(forwardHead);
 
                                     currentHead.dirX = 0;
                                     currentHead.dirZ = -1;
                                     currentHead.posZ += -1;
-                                    currentHead.lenRemaining--;
+                                    currentHead.lenRemaining -= branchPathDecrement;
                                 } else { //Go to dirX;
                                     var forwardHead = currentHead;
                                     forwardHead.dirX = 1;
                                     forwardHead.dirZ = 0;
                                     forwardHead.posX += 1;
-                                    forwardHead.lenRemaining--;
+                                    forwardHead.lenRemaining -= branchPathDecrement;
                                     pathHeads.Enqueue(forwardHead);
 
                                     currentHead.dirX = -1;
                                     currentHead.dirZ = 0;
                                     currentHead.posX += -1;
-                                    currentHead.lenRemaining--;
+                                    currentHead.lenRemaining -= branchPathDecrement;
                                 }
                             }
                         } else { //it's a 4 way intersection
@@ -213,28 +215,28 @@ namespace progfish.LargeRuin {
                                 forwardHead1.dirX = 0;
                                 forwardHead1.dirZ = 1;
                                 forwardHead1.posZ += 1;
-                                forwardHead1.lenRemaining--;
+                                forwardHead1.lenRemaining -= branchPathDecrement;
                                 pathHeads.Enqueue(forwardHead1);
 
                                 var forwardHead2 = currentHead;
                                 forwardHead2.dirX = 0;
                                 forwardHead2.dirZ = 1;
                                 forwardHead2.posZ += 1;
-                                forwardHead2.lenRemaining--;
+                                forwardHead2.lenRemaining -= branchPathDecrement;
                                 pathHeads.Enqueue(forwardHead2);
                             } else { //Go to dirX;
                                 var forwardHead1 = currentHead;
                                 forwardHead1.dirX = 1;
                                 forwardHead1.dirZ = 0;
                                 forwardHead1.posX += 1;
-                                forwardHead1.lenRemaining--;
+                                forwardHead1.lenRemaining -= branchPathDecrement;
                                 pathHeads.Enqueue(forwardHead1);
 
                                 var forwardHead2 = currentHead;
                                 forwardHead2.dirX = -1;
                                 forwardHead2.dirZ = 0;
                                 forwardHead2.posX += 1;
-                                forwardHead2.lenRemaining--;
+                                forwardHead2.lenRemaining -= branchPathDecrement;
                                 pathHeads.Enqueue(forwardHead2);
                             }
 

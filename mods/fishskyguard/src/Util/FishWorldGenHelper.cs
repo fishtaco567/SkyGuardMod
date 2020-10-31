@@ -1,13 +1,14 @@
 ﻿using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace progfish.WorldGen.Util {
     public class FishWorldGenHelper {
 
         private static int[] otherCoordPairs = { 2, 0, 0, 1, 2, 1 };
 
-        public static void PlaceBlockColumn(IBlockAccessor blockAccessor, int xPos, int zPos, int startY, int endY, int id, bool replaceBlocks) {
+        public static void PlaceBlockColumn(IWorldGenBlockAccessor blockAccessor, int xPos, int zPos, int startY, int endY, int id, bool replaceBlocks, bool triggerBlockUpdates = false) {
             BlockPos pos = new BlockPos(xPos, startY, zPos);
 
             for(int j = startY; j <= endY; j++) {
@@ -15,7 +16,21 @@ namespace progfish.WorldGen.Util {
 
                 if(replaceBlocks || blockAccessor.GetBlock(pos).IsReplacableBy(blockAccessor.GetBlock(id))) {
                     blockAccessor.SetBlock(id, pos);
+
+                    if(triggerBlockUpdates) {
+                        blockAccessor.ScheduleBlockUpdate(pos);
+                    }
                 }
+            }
+        }
+
+        public static void UpdateBlockColumn(IWorldGenBlockAccessor blockAccessor, int xPos, int zPos, int startY, int endY) {
+            BlockPos pos = new BlockPos(xPos, startY, zPos);
+
+            for(int j = startY; j <= endY; j++) {
+                pos.Y = j;
+
+                blockAccessor.ScheduleBlockUpdate(pos);
             }
         }
 
@@ -34,7 +49,7 @@ namespace progfish.WorldGen.Util {
         public static int GetGroundHeight(IBlockAccessor blockAccessor, int xPos, int yStart, int zPos) {
             BlockPos pos = new BlockPos(xPos, yStart, zPos);
 
-            while(pos.Y > 0 && blockAccessor.GetBlockId(pos) == 0) {
+            while(pos.Y > 0 && blockAccessor.GetBlock(pos).Replaceable > 5000) {
                 pos.Y--;
             }
 

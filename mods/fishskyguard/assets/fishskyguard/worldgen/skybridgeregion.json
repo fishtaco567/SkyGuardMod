@@ -1,9 +1,10 @@
 ﻿{
 	regionSize: 1024,
-	chanceOfRegion: 0.1,
+	chanceOfRegion: 0.125,
 	rangeForCenter: 0.4,
-	minLengthOfPath: 6,
+	minLengthOfPath: 5,
 	maxLengthOfPath: 14,
+	branchPathDecrement: 2,
 	straightWalkChance: 0.8,
 	towerChance: 0.04,
 	buildingChance: 0.04,

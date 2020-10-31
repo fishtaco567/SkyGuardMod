@@ -137,7 +137,7 @@ namespace progfish.LargeRuin {
             this.region = region;
         }
 
-        public void GenerateChunk(ICoreServerAPI api, IBlockAccessor blockAccessor, int chunkX, int chunkZ, long seed) {
+        public void GenerateChunk(ICoreServerAPI api, IWorldGenBlockAccessor blockAccessor, int chunkX, int chunkZ, long seed) {
             var chunkFeature = region.GetFeature(chunkX, chunkZ);
             if(chunkFeature == SkyBridgeRegion.SkyBridgeFeature.None) {
                 return;
@@ -305,7 +305,7 @@ namespace progfish.LargeRuin {
                         }
                     }
 
-                    for(int j = 1; j < centerPlatformExtraWidth; j++) {
+                    for(int j = 1; j < storeRoomPlatformExtraWidth; j++) {
                         for(int i = towerPlatformMinX + j; i <= towerPlatformMaxX - j; i++) {
                             for(int k = towerPlatformMinZ + j; k <= towerPlatformMaxZ - j; k++) {
                                 if(i == towerPlatformMinX + j || i == towerPlatformMaxX - j || k == towerPlatformMinZ + j || k == towerPlatformMaxZ - j) {
@@ -346,10 +346,12 @@ namespace progfish.LargeRuin {
                     chestBlock.TryPlaceBlockForWorldGen(blockAccessor, pos, BlockFacing.DOWN, random);
 
                     var chestEntity = blockAccessor.GetBlockEntity(pos) as BlockEntityGenericTypedContainer;
-                    chestEntity.Initialize(api);
+                    if(chestEntity != null) {
+                        chestEntity.Initialize(api);
 
-                    var itemRandomizer = new ChestItemRandomizer(itemsTowerChest, itemsTowerChestWeights, api);
-                    itemRandomizer.PlaceItemsInChest(chestEntity, minTowerChestItems, maxTowerChestItems, random);
+                        var itemRandomizer = new ChestItemRandomizer(itemsTowerChest, itemsTowerChestWeights, api);
+                        itemRandomizer.PlaceItemsInChest(chestEntity, minTowerChestItems, maxTowerChestItems, random);
+                    }
                 } else if(chunkFeature == SkyBridgeRegion.SkyBridgeFeature.Building) {
                     towerPlatformMinX -= barracksPlatformExtraWidth;
                     towerPlatformMinZ -= barracksPlatformExtraWidth;
@@ -405,10 +407,12 @@ namespace progfish.LargeRuin {
                         var chestBlock = blockAccessor.GetBlock(chestNorthID);
                         chestBlock.TryPlaceBlockForWorldGen(blockAccessor, pos, BlockFacing.DOWN, random);
                         var chestEntity = blockAccessor.GetBlockEntity(pos) as BlockEntityGenericTypedContainer;
-                        chestEntity.Initialize(api);
+                        if(chestEntity != null) {
+                            chestEntity.Initialize(api);
 
-                        var itemRandomizer = new ChestItemRandomizer(itemsBarracksChest, itemsBarracksChestWeights, api);
-                        itemRandomizer.PlaceItemsInChest(chestEntity, minBarracksChestItems, maxBarracksChestItems, random);
+                            var itemRandomizer = new ChestItemRandomizer(itemsBarracksChest, itemsBarracksChestWeights, api);
+                            itemRandomizer.PlaceItemsInChest(chestEntity, minBarracksChestItems, maxBarracksChestItems, random);
+                        }
                     }
 
                     var barracksHeight = barracksHeightMin + random.NextInt(barracksHeightMax - barracksHeightMin);
@@ -494,18 +498,20 @@ namespace progfish.LargeRuin {
                         var chestBlock = blockAccessor.GetBlock(chestNorthID);
                         chestBlock.TryPlaceBlockForWorldGen(blockAccessor, pos, BlockFacing.DOWN, random);
                         var chestEntity = blockAccessor.GetBlockEntity(pos) as BlockEntityGenericTypedContainer;
-                        chestEntity.Initialize(api);
+                        if(chestEntity != null) {
+                            chestEntity.Initialize(api);
 
-                        var itemRandomizer = new ChestItemRandomizer(itemsCenterChest, itemsCenterChestWeights, api);
-                        itemRandomizer.PlaceItemsInChest(chestEntity, minCenterChestItems, maxCenterChestItems, random);
+                            var itemRandomizer = new ChestItemRandomizer(itemsCenterChest, itemsCenterChestWeights, api);
+                            itemRandomizer.PlaceItemsInChest(chestEntity, minCenterChestItems, maxCenterChestItems, random);
+                        }
                     }
 
                     //place crates
                     var numCrates = barracksMinCrates + random.NextInt(barracksMaxCrates - barracksMinCrates);
                     pos.Y = region.height + 1;
                     for(int i = 0; i < numCrates; i++) {
-                        pos.X = random.NextInt(towerPlatformSizeX - 6) + towerPlatformMinX + 3;
-                        pos.Z = random.NextInt(towerPlatformSizeZ - 6) + towerPlatformMinZ + 3;
+                        pos.X = random.NextInt(towerPlatformSizeX - 2) + towerPlatformMinX + 1;
+                        pos.Z = random.NextInt(towerPlatformSizeZ - 2) + towerPlatformMinZ + 1;
                         blockAccessor.SetBlock(crateID, pos);
                     }
 

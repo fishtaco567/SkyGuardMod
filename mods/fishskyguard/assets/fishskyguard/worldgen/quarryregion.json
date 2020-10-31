@@ -1,0 +1,30 @@
+﻿{
+	regionSize: 512,
+	chanceOfQuarry: 0.1,
+
+	minWidthX: 20,
+	maxWidthX: 64,
+
+	minWidthZ: 20,
+	maxWidthZ: 64,
+
+	minDepth: 5,
+	maxDepth: 22,
+
+	minStepDepth: 5,
+	maxStepDepth: 8,
+
+	minPathStubLength: 20,
+	maxPathStubLength: 40,
+
+	minPathStubs: 2,
+	maxPathStubs: 5,
+
+	minPathStubWidth: 3,
+	maxPathStubWidth: 5,
+
+	chanceOfFlooding: 0.2,
+
+	minFloodingDepth: 1,
+	maxFloodingDepth: 4
+}

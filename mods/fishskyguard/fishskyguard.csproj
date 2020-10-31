@@ -62,14 +62,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\fishskyguard\worldgen\quarrygen.json" />
     <Content Include="modinfo.json" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\fishskyguard\worldgen\quarryregion.json" />
     <None Include="assets\fishskyguard\worldgen\skybridgegen.json" />
     <None Include="assets\fishskyguard\worldgen\skybridgeregion.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\LargeRuin\LargeRuinMod.cs" />
+    <Compile Include="src\LargeRuin\QuarryChunkGenerator.cs" />
+    <Compile Include="src\LargeRuin\QuarryRegion.cs" />
     <Compile Include="src\LargeRuin\SkyBridgeChunkGenerator.cs" />
     <Compile Include="src\LargeRuin\SkyBridgeRegion.cs" />
     <Compile Include="src\Util\ChestItemRandomizer.cs" />
