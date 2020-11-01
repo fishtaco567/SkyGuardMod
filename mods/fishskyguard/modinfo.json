@@ -4,7 +4,7 @@
   "name": "Skyguard",
   "authors": [ "fishtaco567"  ],
   "description": "The ruins of the Skyguard, large ruins found throughout the world",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "requiredOnClient": false,
   "dependency": {
     "game": ""
